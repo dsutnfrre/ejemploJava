@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu de Alumno</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo right">Logo</a>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col s3">
+                <ul id="nav-mobile" class="left hide-on-med-and-down" th:each="opcion: ${opciones}">
+                    <li>
+                        <a th:text="${opcion.nombre}" th:href="${opcion.url}"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s9">
+                <!-- Teal page content  -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

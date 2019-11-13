@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluaciones Pendientes</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo right">Logo</a>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col 12">
+                <div>
+                    <h2>
+                        Evaluaciones Pendientes
+                    </h2>
+                </div>
+                <ul class="collection" >
+                    <li class="collection-item" th:each="cursada: ${cursadas}">
+                        <a th:text="${cursada.materia.nombre}"
+                           th:href="@{/evaluacion?docente={docente}&cursada={anio}&materia={materia}(docente=${cursada.docente.legajo}, materia=${cursada.materia.nombre}, anio=${cursada.anio})}"
+                        >
+                            <i class="material-icons">send</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        select {
+            display: block
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo right">Logo</a>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col s12">
+                <div>
+                    <h2>
+                        Evaluacion Docente
+                    </h2>
+                </div>
+                <form method="POST" th:action="@{/save}" th:object="${respuestaForm}" >
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <input type="hidden" id="docente"name="docente" th:value="${docente}"/>
+                    <input type="hidden" id="cursada" name="cursada" th:value="${cursada}"/>
+                    <input type="hidden" id="materia" name="materia" th:value="${materia}"/>
+                    <table>
+                        <tr th:each="pregunta: ${evaluacionRealizada.preguntas}">
+                            <td th:text="${pregunta.descripPgta}"/>
+                            <td>
+                                <select name="respuestas" id="respuestas"class="input-field col s12" >
+                                    <option th:each="respuesta: ${pregunta.respuestas}" th:value="${respuesta.descripRta}" th:text="${respuesta.descripRta}"/>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
